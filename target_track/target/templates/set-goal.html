@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}30days Challenge!! | Set Goal{% endblock %}
+
+{% block subtitle %}Set Goal{% endblock %}
+
+{% block contents %}
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    {% for field in form %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">
+        <strong>{{ field.label_tag }}</strong>
+      </label>
+      <div class="col-sm-8">
+        {{ field }}
+        {{ field.errors }}
+      </div>
+    </div>
+
+    {% endfor %}
+
+    <button type="submit">登録</button>
+  </form>
+{% endblock %}
